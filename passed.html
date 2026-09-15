@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>دروس پاس شده</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">انتخاب واحد</div>
+
+        <nav class="nav">
+          <a href="index.html">صفحه اصلی</a>
+          <a href="passed.html" class="active">دروس پاس شده</a>
+          <a href="courses.html">انتخاب واحد</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="page-header">
+        <div>
+          <h1>دروس پاس شده</h1>
+          <p>درس‌هایی که تاکنون گذرانده‌اید را انتخاب کنید.</p>
+        </div>
+
+        <div class="passed-counter">
+          <span id="passedCount">0</span>
+          <small>درس پاس شده</small>
+        </div>
+      </section>
+
+      <div class="passed-search">
+        <input
+          type="text"
+          id="passedCourseSearch"
+          placeholder="جستجوی نام درس..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="course-sections" id="courseSections"></div>
+    </main>
+
+    <script src="js/courses.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/theme.js"></script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>برنامه دانشگاهی من</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- =========================
+         Header
+    ========================== -->
+
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">برنامه دانشگاهی</div>
+
+        <nav class="nav">
+          <a href="index.html" class="active"> صفحه اصلی </a>
+
+          <a href="passed.html"> دروس پاس شده </a>
+
+          <a href="courses.html"> انتخاب واحد </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- =========================
+         Main
+    ========================== -->
+
+    <main class="container">
+      <section class="page-header">
+        <div>
+          <h1>برنامه دانشگاهی من</h1>
+
+          <p>مدیریت دروس، دروس پاس شده و انتخاب واحد</p>
+        </div>
+      </section>
+
+      <!-- =========================
+             Dashboard Cards
+        ========================== -->
+
+      <section class="dashboard-grid">
+        <a href="passed.html" class="dashboard-card">
+          <div class="dashboard-icon">✓</div>
+
+          <div class="dashboard-info">
+            <h2>دروس پاس شده</h2>
+
+            <p>مدیریت و مشاهده دروسی که گذرانده‌اید</p>
+          </div>
+
+          <div class="dashboard-arrow">←</div>
+        </a>
+
+        <a href="courses.html" class="dashboard-card">
+          <div class="dashboard-icon">+</div>
+
+          <div class="dashboard-info">
+            <h2>انتخاب واحد</h2>
+
+            <p>انتخاب درس و ساخت برنامه کلاسی</p>
+          </div>
+
+          <div class="dashboard-arrow">←</div>
+        </a>
+      </section>
+
+      <!-- =========================
+             Statistics
+        ========================== -->
+
+      <section class="dashboard-stats">
+        <div class="stat-card">
+          <span> کل دروس </span>
+
+          <strong id="totalCourses"> 0 </strong>
+        </div>
+
+        <div class="stat-card">
+          <span> دروس پاس شده </span>
+
+          <strong id="passedCourses"> 0 </strong>
+        </div>
+
+        <div class="stat-card">
+          <span> واحدهای پاس شده </span>
+
+          <strong id="passedUnits"> 0 </strong>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/courses.js"></script>
+
+    <script>
+      const STORAGE_KEY = "passedCourses";
+
+      const passedCourses = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+      const passedCourseObjects = courses.filter((course) =>
+        passedCourses.includes(course.id),
+      );
+
+      const passedUnits = passedCourseObjects.reduce(
+        (total, course) => total + course.units,
+        0,
+      );
+
+      document.getElementById("totalCourses").textContent = courses.length;
+
+      document.getElementById("passedCourses").textContent =
+        passedCourseObjects.length;
+
+      document.getElementById("passedUnits").textContent = passedUnits;
+    </script>
+    <script src="js/theme.js"></script>
+  </body>
+</html>
