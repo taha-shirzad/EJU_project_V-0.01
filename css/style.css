@@ -1,11 +1,15 @@
 /* =========================================================
    RESET
 ========================================================= */
-
+@font-face {
+  font-family: morabba;
+  src: url(/font/Morabba-Light.ttf);
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: morabba;
 }
 
 /* =========================================================
@@ -1735,4 +1739,953 @@ a {
 #selectedCoursesTable th:nth-child(7),
 #selectedCoursesTable td:nth-child(7) {
   min-width: 170px;
+}
+/* =========================
+   Course Actions
+========================= */
+
+.course-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.edit-course-button,
+.remove-course-button {
+  width: 34px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.edit-course-button {
+  border: 1px solid rgba(59, 130, 246, 0.25);
+
+  background: rgba(59, 130, 246, 0.08);
+
+  color: #3b82f6;
+}
+
+.edit-course-button:hover {
+  background: rgba(59, 130, 246, 0.16);
+
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.edit-course-button:active,
+.remove-course-button:active {
+  transform: scale(0.94);
+}
+
+.edit-course-button svg,
+.remove-course-button svg {
+  width: 17px;
+  height: 17px;
+}
+/* =========================
+   Schedule Export
+========================= */
+
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.export-schedule-button {
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 0 16px;
+
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 10px;
+
+  background: rgba(99, 102, 241, 0.08);
+  color: #6366f1;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.export-schedule-button:hover {
+  background: rgba(99, 102, 241, 0.14);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.export-schedule-button:active {
+  transform: scale(0.97);
+}
+
+.export-schedule-button svg {
+  flex-shrink: 0;
+}
+
+/* =========================
+   Export Modal
+========================= */
+
+.export-modal {
+  width: min(1100px, calc(100vw - 40px));
+  max-height: calc(100vh - 40px);
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px;
+
+  border-radius: 18px;
+
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e5e7eb);
+
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+
+  overflow: hidden;
+}
+
+/* =========================
+   Export Preview
+========================= */
+
+.export-preview-wrapper {
+  flex: 1;
+
+  margin-top: 20px;
+  padding: 22px;
+
+  background: #f3f4f6;
+
+  border-radius: 14px;
+
+  overflow: auto;
+}
+
+.schedule-export-preview {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  padding: 38px;
+
+  background: #ffffff;
+  color: #111827;
+
+  border-radius: 4px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  direction: rtl;
+
+  font-family: "Morabba", Tahoma, sans-serif;
+}
+
+/* =========================
+   Export Header
+========================= */
+
+.export-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding-bottom: 24px;
+
+  border-bottom: 2px solid #111827;
+}
+
+.export-title {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.export-subtitle {
+  margin-top: 5px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.export-term {
+  min-width: 130px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 12px 18px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  background: #f9fafb;
+}
+
+.export-term span {
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+.export-term strong {
+  margin-top: 4px;
+
+  font-size: 16px;
+}
+
+/* =========================
+   Export Summary
+========================= */
+
+.export-summary {
+  display: flex;
+
+  gap: 12px;
+
+  margin: 22px 0;
+}
+
+.export-summary-item {
+  min-width: 130px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 12px 16px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  background: #fafafa;
+}
+
+.export-summary-item span {
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+.export-summary-item strong {
+  font-size: 16px;
+}
+
+/* =========================
+   Export Table
+========================= */
+
+.export-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.export-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 13px;
+}
+
+.export-table th {
+  padding: 13px 10px;
+
+  background: #111827;
+  color: #ffffff;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.export-table th:first-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.export-table th:last-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.export-table td {
+  padding: 13px 10px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  text-align: center;
+
+  vertical-align: middle;
+
+  white-space: nowrap;
+}
+
+.export-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.export-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================
+   Export Footer
+========================= */
+
+.export-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 24px;
+  padding-top: 16px;
+
+  border-top: 1px solid #e5e7eb;
+
+  color: #9ca3af;
+
+  font-size: 11px;
+}
+
+/* =========================
+   Export Actions
+========================= */
+
+.export-actions {
+  display: flex;
+  justify-content: flex-start;
+
+  gap: 10px;
+
+  margin-top: 18px;
+}
+
+.export-download-button,
+.export-print-button {
+  min-width: 130px;
+  height: 42px;
+
+  padding: 0 18px;
+
+  border-radius: 9px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.export-download-button {
+  border: 1px solid #111827;
+
+  background: #111827;
+  color: #ffffff;
+}
+
+.export-download-button:hover {
+  background: #1f2937;
+}
+
+.export-print-button {
+  border: 1px solid #d1d5db;
+
+  background: #ffffff;
+  color: #374151;
+}
+
+.export-print-button:hover {
+  background: #f9fafb;
+}
+
+.export-download-button:active,
+.export-print-button:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 700px) {
+  .page-header-actions {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+  .page-header-actions button {
+    width: 100%;
+  }
+
+  .export-modal {
+    width: calc(100vw - 20px);
+
+    max-height: calc(100vh - 20px);
+
+    padding: 16px;
+  }
+
+  .export-preview-wrapper {
+    padding: 10px;
+  }
+
+  .schedule-export-preview {
+    min-width: 850px;
+
+    padding: 25px;
+  }
+
+  .export-header {
+    align-items: flex-start;
+  }
+
+  .export-actions {
+    flex-direction: column;
+  }
+
+  .export-download-button,
+  .export-print-button {
+    width: 100%;
+  }
+}
+/* =========================
+   Export Theme Selector
+========================= */
+
+.export-theme-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 12px;
+  background: var(--card-bg, #ffffff);
+}
+
+.export-theme-label {
+  flex-shrink: 0;
+  color: var(--text-color, #374151);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.export-theme-options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.export-theme-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-color, #374151);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.export-theme-option:hover {
+  background: rgba(127, 127, 127, 0.08);
+}
+
+.export-theme-option:active {
+  transform: scale(0.96);
+}
+
+.export-theme-option.active {
+  border-color: rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.08);
+  color: #6366f1;
+}
+
+.theme-preview {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+/* Light */
+
+.theme-preview-light {
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+}
+
+/* Dark */
+
+.theme-preview-dark {
+  background: linear-gradient(135deg, #111827 0%, #374151 100%);
+}
+
+/* Fantasy / Cozy */
+
+.theme-preview-fantasy {
+  background: linear-gradient(135deg, #f8e8df 0%, #eadff5 48%, #dcebf2 100%);
+}
+
+/* =========================
+   Export Theme Responsive
+========================= */
+
+@media (max-width: 700px) {
+  .export-theme-selector {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .export-theme-options {
+    width: 100%;
+  }
+
+  .export-theme-option {
+    flex: 1;
+    justify-content: center;
+  }
+}
+/* =========================
+   Schedule Export Themes
+========================= */
+
+/* ---------- Light ---------- */
+
+.schedule-export-preview[data-theme="light"] {
+  background: #ffffff;
+  color: #111827;
+}
+
+.schedule-export-preview[data-theme="light"] .export-header {
+  border-bottom-color: #111827;
+}
+
+.schedule-export-preview[data-theme="light"] .export-title {
+  color: #111827;
+}
+
+.schedule-export-preview[data-theme="light"] .export-subtitle {
+  color: #6b7280;
+}
+
+.schedule-export-preview[data-theme="light"] .export-term {
+  border-color: #e5e7eb;
+  background: #f9fafb;
+}
+
+.schedule-export-preview[data-theme="light"] .export-term span {
+  color: #6b7280;
+}
+
+.schedule-export-preview[data-theme="light"] .export-summary-item {
+  border-color: #e5e7eb;
+  background: #fafafa;
+}
+
+.schedule-export-preview[data-theme="light"] .export-summary-item span {
+  color: #6b7280;
+}
+
+.schedule-export-preview[data-theme="light"] .export-table th {
+  background: #111827;
+  color: #ffffff;
+}
+
+.schedule-export-preview[data-theme="light"] .export-table td {
+  border-bottom-color: #e5e7eb;
+  color: #111827;
+}
+
+.schedule-export-preview[data-theme="light"]
+  .export-table
+  tbody
+  tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.schedule-export-preview[data-theme="light"] .export-footer {
+  border-top-color: #e5e7eb;
+  color: #9ca3af;
+}
+
+/* ---------- Dark ---------- */
+
+.schedule-export-preview[data-theme="dark"] {
+  background: #111827;
+  color: #f9fafb;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-header {
+  border-bottom-color: #374151;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-title {
+  color: #f9fafb;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-subtitle {
+  color: #9ca3af;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-term {
+  border-color: #374151;
+  background: #1f2937;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-term span {
+  color: #9ca3af;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-summary-item {
+  border-color: #374151;
+  background: #1f2937;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-summary-item span {
+  color: #9ca3af;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-table th {
+  background: #374151;
+  color: #f9fafb;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-table td {
+  border-bottom-color: #374151;
+  color: #f9fafb;
+}
+
+.schedule-export-preview[data-theme="dark"]
+  .export-table
+  tbody
+  tr:nth-child(even) {
+  background: #1f2937;
+}
+
+.schedule-export-preview[data-theme="dark"] .export-footer {
+  border-top-color: #374151;
+  color: #6b7280;
+}
+
+/* ---------- Fantasy / Cozy ---------- */
+
+.schedule-export-preview[data-theme="fantasy"] {
+  background: #c6a979;
+  color: #33291f;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-header {
+  border-bottom-color: #ad8e60;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-title {
+  color: #30271f;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-subtitle {
+  color: #6f5a3f;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-term {
+  border-color: #b99a6b;
+  background: #d9bc87;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-term span {
+  color: #705b40;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-term strong {
+  color: #33291f;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-summary-item {
+  border-color: #b99a6b;
+  background: #d9bc87;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-summary-item span {
+  color: #705b40;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-summary-item strong {
+  color: #33291f;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-table th {
+  background: #8f7650;
+  color: #fff8e9;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-table td {
+  border-bottom-color: #b99a6b;
+  color: #3b3025;
+}
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-table
+  tbody
+  tr:nth-child(even) {
+  background: #d9bc87;
+}
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-table
+  tbody
+  tr:nth-child(odd) {
+  background: #cfb37f;
+}
+
+.schedule-export-preview[data-theme="fantasy"] .export-footer {
+  border-top-color: #b99a6b;
+  color: #80694b;
+}
+
+/* =========================
+   Fantasy Pastel Palette
+========================= */
+
+.schedule-export-preview[data-theme="fantasy"] {
+  --fantasy-pink: #d596a2;
+  --fantasy-yellow: #e8c95d;
+  --fantasy-purple: #a99bc5;
+  --fantasy-blue: #87aec7;
+  --fantasy-green: #98b98d;
+  --fantasy-peach: #dda461;
+  --fantasy-lilac: #b9a6d0;
+  --fantasy-cream: #ead6aa;
+}
+
+/* =========================
+   Fantasy Decorative Accents
+========================= */
+
+.schedule-export-preview[data-theme="fantasy"] .export-header::after {
+  background: linear-gradient(
+    90deg,
+    var(--fantasy-pink),
+    var(--fantasy-purple),
+    var(--fantasy-blue),
+    var(--fantasy-green),
+    var(--fantasy-yellow),
+    var(--fantasy-peach)
+  );
+}
+
+/* =========================
+   Fantasy Table Rows
+========================= */
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-table
+  tbody
+  tr:nth-child(6n + 1) {
+  background: #f2d7a8;
+}
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-table
+  tbody
+  tr:nth-child(6n + 2) {
+  background: #e3bfc5;
+}
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-table
+  tbody
+  tr:nth-child(6n + 3) {
+  background: #c7bddc;
+}
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-table
+  tbody
+  tr:nth-child(6n + 4) {
+  background: #b9d1df;
+}
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-table
+  tbody
+  tr:nth-child(6n + 5) {
+  background: #bdd0b2;
+}
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-table
+  tbody
+  tr:nth-child(6n + 6) {
+  background: #e8c98c;
+}
+
+/* =========================
+   Fantasy Soft Highlights
+========================= */
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-summary-item:nth-child(1) {
+  background: #ead6aa;
+  border-color: #d1b47e;
+}
+
+.schedule-export-preview[data-theme="fantasy"]
+  .export-summary-item:nth-child(2) {
+  background: #d8c9df;
+  border-color: #b9a6c8;
+}
+
+/* =========================
+   Fantasy Theme Preview
+========================= */
+
+.theme-preview-fantasy {
+  background: linear-gradient(
+    135deg,
+    #d596a2 0%,
+    #a99bc5 25%,
+    #87aec7 50%,
+    #98b98d 75%,
+    #e8c95d 100%
+  );
+}
+/* =========================
+   Export Modal - Dark Mode
+========================= */
+
+[data-theme="dark"] .export-modal {
+  background: #17191f;
+  border-color: #2a2d35;
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .export-modal .modal-header {
+  border-bottom-color: #2a2d35;
+}
+
+[data-theme="dark"] .export-modal .modal-header h2 {
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .export-modal .modal-header p {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .export-modal .modal-close {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .export-modal .modal-close:hover {
+  color: #f3f4f6;
+  background: #252832;
+}
+
+/* =========================
+   Export Preview Area
+========================= */
+
+[data-theme="dark"] .export-preview-wrapper {
+  background: #0f1115;
+}
+
+/* =========================
+   Export Theme Selector
+========================= */
+
+[data-theme="dark"] .export-theme-selector {
+  background: #1d2027;
+  border-color: #2a2d35;
+}
+
+[data-theme="dark"] .export-theme-label {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .export-theme-option {
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .export-theme-option:hover {
+  background: #272a33;
+}
+
+[data-theme="dark"] .export-theme-option.active {
+  background: rgba(129, 140, 248, 0.12);
+  border-color: rgba(129, 140, 248, 0.3);
+  color: #a5b4fc;
+}
+
+/* =========================
+   Export Actions
+========================= */
+
+[data-theme="dark"] .export-download-button {
+  background: #f3f4f6;
+  border-color: #f3f4f6;
+  color: #111827;
+}
+
+[data-theme="dark"] .export-download-button:hover {
+  background: #ffffff;
+}
+
+[data-theme="dark"] .export-print-button {
+  background: #1d2027;
+  border-color: #363a45;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .export-print-button:hover {
+  background: #272a33;
 }

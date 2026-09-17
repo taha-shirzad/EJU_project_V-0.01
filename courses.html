@@ -39,9 +39,47 @@
           <p>برنامه درسی ترم خود را مدیریت کنید.</p>
         </div>
 
-        <button id="openAddCourse" class="add-course-button" type="button">
-          + اضافه کردن درس
-        </button>
+        <div class="page-header-actions">
+          <button
+            id="exportScheduleButton"
+            class="export-schedule-button"
+            type="button"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 3V15"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M7.5 10.5L12 15L16.5 10.5"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5 20H19"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+
+            خروجی انتخاب واحد
+          </button>
+
+          <button id="openAddCourse" class="add-course-button" type="button">
+            + اضافه کردن درس
+          </button>
+        </div>
       </section>
 
       <!-- =========================
@@ -276,13 +314,128 @@
         </div>
       </div>
     </div>
+    <!-- =========================
+     Export Schedule Modal
+========================= -->
 
+    <div id="exportScheduleModal" class="modal-overlay">
+      <div class="export-modal">
+        <div class="modal-header">
+          <div>
+            <h2>خروجی انتخاب واحد</h2>
+            <p>پیش‌نمایش برنامه انتخاب واحد شما</p>
+          </div>
+
+          <button id="closeExportSchedule" class="modal-close" type="button">
+            ×
+          </button>
+        </div>
+
+        <div class="export-preview-wrapper">
+          <div id="scheduleExportPreview" class="schedule-export-preview">
+            <div class="export-header">
+              <div>
+                <div class="export-title">برنامه انتخاب واحد</div>
+
+                <div class="export-subtitle">برنامه دانشگاهی من</div>
+              </div>
+
+              <div class="export-term">
+                <span>ترم جاری</span>
+                <strong id="exportSemester">-</strong>
+              </div>
+            </div>
+
+            <div class="export-summary">
+              <div class="export-summary-item">
+                <span>تعداد دروس</span>
+                <strong id="exportCourseCount">0</strong>
+              </div>
+
+              <div class="export-summary-item">
+                <span>مجموع واحد</span>
+                <strong id="exportUnitCount">0</strong>
+              </div>
+            </div>
+
+            <div class="export-table-wrapper">
+              <table class="export-table">
+                <thead>
+                  <tr>
+                    <th>ردیف</th>
+                    <th>نام درس</th>
+                    <th>کد درس</th>
+                    <th>گروه</th>
+                    <th>واحد</th>
+                    <th>استاد</th>
+                    <th>زمان تشکیل</th>
+                  </tr>
+                </thead>
+
+                <tbody id="exportCoursesTableBody">
+                  <tr>
+                    <td colspan="7">هنوز درسی انتخاب نشده است.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="export-footer">
+              <span>برنامه دانشگاهی من</span>
+              <span>خروجی انتخاب واحد</span>
+            </div>
+          </div>
+        </div>
+        <div class="export-theme-selector">
+          <span class="export-theme-label">تم خروجی</span>
+
+          <div class="export-theme-options">
+            <button
+              type="button"
+              class="export-theme-option active"
+              data-export-theme="light"
+            >
+              <span class="theme-preview theme-preview-light"></span>
+              <span>لایت</span>
+            </button>
+
+            <button
+              type="button"
+              class="export-theme-option"
+              data-export-theme="dark"
+            >
+              <span class="theme-preview theme-preview-dark"></span>
+              <span>دارک</span>
+            </button>
+
+            <button
+              type="button"
+              class="export-theme-option"
+              data-export-theme="fantasy"
+            >
+              <span class="theme-preview theme-preview-fantasy"></span>
+              <span>فانتزی</span>
+            </button>
+          </div>
+        </div>
+        <div class="export-actions">
+          <button
+            id="downloadScheduleImage"
+            class="export-download-button"
+            type="button"
+          >
+            دانلود تصویر
+          </button>
+        </div>
+      </div>
+    </div>
     <!-- =========================
          JavaScript
     ========================== -->
 
     <script src="js/courses.js"></script>
     <script src="js/course-selection.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="js/theme.js"></script>
   </body>
 </html>
